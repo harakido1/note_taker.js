@@ -8,5 +8,32 @@
       <script defer src="./note.js"></script>
       <title>Note Taker Manager Application</title>
    </head>
-   <body></body>
+   <body>
+      <div class="form-container">
+         <h1>Note Taker</h1>
+         <h3>Add A New Note</h3>
+         <form>
+            <label for="title"
+               >Title
+               <input
+                  type="text"
+                  id="title"
+                  placeholder="Enter a note title."
+               />
+            </label>
+            <label for="note"
+               >Note
+               <textarea
+                  name="note"
+                  id="note"
+                  cols="30"
+                  rows="10"
+                  placeholder="Enter your note text."
+               ></textarea>
+            </label>
+            <input type="submit" />
+         </form>
+      </div>
+      <div class="note-container"></div>
+   </body>
 </html>
