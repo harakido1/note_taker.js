@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="/index.HASH_REF_e40b2f414315ce9ebcc35ea141d85855.css">
+      <script defer="" src="/index.HASH_REF_54da799b0afc9433953d0b4c1c02a804.js"></script>
+      <title>Note Taker Manager Application</title>
+   </head>
+   <body>
+      <!-- popup modal -->
+      <div class="modal-container">
+         <div class="modal">
+            <button class="modal-btn">&times;</button>
+            <h2 class="modal__title"></h2>
+            <p class="modal__body"></p>
+         </div>
+      </div>
+      <!-- title and subtitle -->
+      <div class="form-container">
+         <h1>Note Taker</h1>
+         <h3>Add A New Note</h3>
+         <div class="message alert-message">"hidden message"</div>
+         <!-- input form -->
+         <form>
+            <label for="title">Title
+               <input type="text" id="title" placeholder="Enter a note title.">
+            </label>
+            <label for="note">Note
+               <textarea name="note" id="note" cols="30" rows="10" placeholder="Enter your note text."></textarea>
+            </label>
+            <input type="submit">
+         </form>
+      </div>
+      <!-- saved in localStorage note container -->
+      <div class="note-container"></div>
+   </body>
+</html>
