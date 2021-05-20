@@ -2,7 +2,7 @@
 const noteContainer = document.querySelector('.note-container');
 const modalContainer = document.querySelector('.modal-container');
 const form = document.querySelector('form');
-const titleInput = document.querySelector('#title');
+
 
 // Classes for creating a new note.
 class Note {
@@ -12,39 +12,6 @@ class Note {
       this.id = Math.random();
    }
 }
-
-/* --- LOCAL STORAGE --- */
-// Function: Retrieve notes from storage.
-function getNotes() {
-   let notes;
-   if (localStorage.getItem('noteApp.notes') === null) {
-      notes = [];
-   } else {
-      notes = JSON.parse(localStorage.getItem('noteApp.notes'));
-   }
-   //console.log(notes);
-   return notes;
-}
-//getNotes();
-
-// Function: Add notes to localStorage.
-function addNoteToLocalStorage(note) {
-   const notes = getNotes();
-   notes.push(note);
-   localStorage.setItem('noteApp.notes', JSON.stringify(notes));
-}
-
-// Function: Remove notes from localStorage.
-function removeNote(id) {
-   const notes = getNotes();
-   notes.forEach((note, index) => {
-      if (note.id === id) {
-         notes.splice(index, 1);
-      }
-      localStorage.setItem('noteApp.notes', JSON.stringify(notes));
-   })
-}
-
 
 /* --- UI UPDATES --- */
 // Function: Create a new note in UI.
@@ -61,15 +28,6 @@ function addNoteToList(note) {
    </div>
    `;
    noteContainer.appendChild(newUINote);
-}
-
-
-// Function: Show notes in UI.
-function displayNotes() {
-   const notes = getNotes();
-   notes.forEach(note => {
-      addNoteToList(note);
-   });
 }
 
 // Function Show alert message.
@@ -91,7 +49,6 @@ function activateNoteModal(title, body) {
    modalContainer.classList.add('active');
 }
 
-
 // Event: Close modal.
 const modalBtn = document.querySelector('.modal__btn').addEventListener('click', () => {
    modalContainer.classList.remove('active');
@@ -109,14 +66,10 @@ noteContainer.addEventListener('click', (e) => {
       const currentNote = e.target.closest('.note');
       showAlertMessage('Your note was permanently deleted.', 'remove-message');
       currentNote.remove();
-      const id = currentNote.querySelector('span').textContent;
-      removeNote(Number(id));
+      //const id = currentNote.querySelector('span').textContent;
+      //removeNote(Number(id));
    }
 })
-
-
-// Event: Display notes.
-document.addEventListener('DOMContentLoaded', displayNotes);
 
 // Event: Note form submit.
 form.addEventListener('submit', (e) => {
@@ -127,12 +80,8 @@ form.addEventListener('submit', (e) => {
    if(titleInput.value.length > 0 && noteInput.value.length > 0) {
       const newNote = new Note(titleInput.value, noteInput.value);
       addNoteToList(newNote);
-      addNoteToLocalStorage(newNote);
+      //addNoteToLocalStorage(newNote);
       titleInput.value = "";
       noteInput.value = "";
-      showAlertMessage('Note successfully added!', 'success-message');
-      titleInput.focus();
-   } else {
-      showAlertMessage('Please add both a title and a note.', 'alert-message');
    }
 })
