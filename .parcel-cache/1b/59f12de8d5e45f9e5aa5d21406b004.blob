@@ -1,4 +1,4 @@
-// Global Query Selectors from DOM Elements.
+// Global Query Selectors.
 const noteContainer = document.querySelector('.note-container');
 const modalContainer = document.querySelector('.modal-container');
 const form = document.querySelector('form');
